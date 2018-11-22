@@ -226,7 +226,7 @@ jogo.fase1.prototype = {
         if(!this.game.device.desktop){
             vidaPersonagem = 6000;
             game.time.events.loop(50, andarMobile, this);
-            nave.velocity.y = + 20;
+            nave.y = + 20;
         }
         
     },
@@ -816,11 +816,11 @@ jogo.fase1.prototype = {
 function andarMobile(){
         
    
-    if(nave.y >= 380){
-     nave.y -= 20;
+    if(movB == 1){
+     nave.y -= 40;
     }
-    if(nave.y <= 55){
-     nave.y += 30;
+    if(movB == 3){
+     nave.y += 50;
     }
     
 }
