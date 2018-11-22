@@ -1,0 +1,23 @@
+Como jogar:
+
+Direcional do teclado anda pelo mapa
+Espaço (apertar/segurar) faz a nave atirar
+Quando a barra de Rage ficar verde, ganha 10 pontos e não 1
+Com a barra verde, a tecla X atira em diagonal
+
+
+
+
+1 - A cada 1500 pontos o boss spawna
+2 - Quando o boss spawna a dificuldade aumenta o "level" em 1
+3 - Existem códigos que podem ser digitados no console
+3.1 - vidaPersonagem = quantidadeDeVidas
+3.2 - scoreBoss = PontosParaInvocarOBoss, onde 1500 é o valor que faz o boss spawnar.
+4 - O respawn de mobs é aleatório
+5 - No momento o ataque especial funciona pela tecla X, atirando na diagonal.
+6 - O jogo muda de fase a cada boss eliminado
+7 - O inimigo morre ao tocar no final do mapa
+
+
+
+freewebhostingarea.com
