@@ -66,7 +66,7 @@ jogo.fase1.prototype = {
         ////////////////////////////configurações do jogo/criação de balas/inimigos/////////////////////////////////
                 //nave
         
-        nave = game.add.sprite(centroX,centroY,'nave');//Nave começa o jogo no meio da tela
+        nave = game.add.sprite(centroX - 300,centroY,'nave');//Nave começa o jogo no meio da tela
         nave.anchor.setTo(0.5, 0.5);
        //Habilita as fisicas para o personagem não sair da tela
         game.physics.enable(nave);
@@ -222,7 +222,11 @@ jogo.fase1.prototype = {
         temagame.play();
         
         
-       
+       //Verifica se a pessoa está no celular ou no PC
+        if(!this.game.device.desktop){
+            vidaPersonagem = 6000;
+            game.time.events.loop(50, andarMobile, this);
+        }
         
     },
     update: function (){
@@ -321,7 +325,7 @@ jogo.fase1.prototype = {
         }else{
             fimJogo.setText('GAME OVER !\nAperte ENTER para reiniciar');
             
-            if(game.input.keyboard.isDown(Phaser.Keyboard.ENTER)){
+            if(game.input.keyboard.isDown(Phaser.Keyboard.ENTER) || this.game.input.activePointer.isDown){
            
             
         
@@ -804,3 +808,18 @@ jogo.fase1.prototype = {
      
      
     }
+
+
+
+
+function andarMobile(){
+        
+   movB = game.rnd.integerInRange(1, 3);
+    if(movB == 1){
+     nave.y -= 1;
+    }
+    if(movB == 2){
+     nave.y += 1;
+    }
+    
+}
