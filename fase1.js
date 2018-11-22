@@ -66,7 +66,7 @@ jogo.fase1.prototype = {
         ////////////////////////////configurações do jogo/criação de balas/inimigos/////////////////////////////////
                 //nave
         
-        nave = game.add.sprite(centroX - 300,centroY,'nave');//Nave começa o jogo no meio da tela
+        nave = game.add.sprite(centroX - 200,centroY,'nave');//Nave começa o jogo no meio da tela
         nave.anchor.setTo(0.5, 0.5);
        //Habilita as fisicas para o personagem não sair da tela
         game.physics.enable(nave);
@@ -814,11 +814,11 @@ jogo.fase1.prototype = {
 
 function andarMobile(){
         
-   movB = game.rnd.integerInRange(1, 4);
-    if(movB == 1){
+   
+    if(nave.y >= 380){
      nave.y -= 20;
     }
-    if(movB == 2){
+    if(nave.y <= 55){
      nave.y += 30;
     }
     
