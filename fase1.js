@@ -27,7 +27,7 @@ jogo.fase1.prototype = {
          game.load.spritesheet('atkBoss','assets/ataque_boss.png',200,49);//pixel da imagem é 256x256
         //Audio
         game.load.audio('audioBoss', 'assets/audio/Rugido.wav');
-        game.load.audio('temaGame', 'assets/audio/temagame.ogg');
+        game.load.audio('temaGame', 'assets/audio/Temagame.ogg');
         game.load.audio('tiroNave', 'assets/audio/Tironave.ogg');
         
         
