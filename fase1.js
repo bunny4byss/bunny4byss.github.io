@@ -236,10 +236,10 @@ jogo.fase1.prototype = {
            
      
  if (movB == 1){
-     nave.y -= 1.5;
+     nave.y -= 1;
  }
             if(movB == 3){
-                nave.y += 1.5;
+                nave.y += 1;
             }
             
         }
