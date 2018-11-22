@@ -814,12 +814,12 @@ jogo.fase1.prototype = {
 
 function andarMobile(){
         
-   movB = game.rnd.integerInRange(1, 3);
+   movB = game.rnd.integerInRange(1, 4);
     if(movB == 1){
-     nave.y -= 10;
+     nave.y -= 20;
     }
     if(movB == 2){
-     nave.y += 10;
+     nave.y += 30;
     }
     
 }
