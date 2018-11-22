@@ -304,7 +304,7 @@ jogo.fase1.prototype = {
         
         
         
-        if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
+        if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) || this.game.input.activePointer.isDown){
             this.atirar();
             
         }
