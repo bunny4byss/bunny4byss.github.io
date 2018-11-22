@@ -231,7 +231,7 @@ jogo.fase1.prototype = {
     },
     update: function (){
         
-        if(this.game.device.desktop){
+        if(!this.game.device.desktop){
             vidaPersonagem = 6000;
            
      
