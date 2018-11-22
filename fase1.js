@@ -816,10 +816,10 @@ function andarMobile(){
         
    movB = game.rnd.integerInRange(1, 3);
     if(movB == 1){
-     nave.y -= 1;
+     nave.y -= 10;
     }
     if(movB == 2){
-     nave.y += 1;
+     nave.y += 10;
     }
     
 }
