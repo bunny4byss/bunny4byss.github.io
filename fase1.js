@@ -3,7 +3,7 @@ var jogo = {}, centroX = 600/2,centroY = 400/2,nave, speed = 5, velocidadeDispar
     furia, furia2, furia3, furiaPonto = 0, ragebala = 0, inimigoG, inimigoGrupoGarg ,inimigoGarg, boss, bossGrupo,
     bossHP = 100, movB, balaArma, balaBoss, proximoAtaqueB = 0, velocidadeAtaqueB = 3000, inimigoDP, inimigoDPGrupo,
     scoreBoss = 0, level = 0, levelvelocidade = -1, night, evening, day, morning, sun, lifehack;
-var audioBoss, tiroNave, temagame;
+var audioBoss, tiroNave;
 
 
 
@@ -27,7 +27,7 @@ jogo.fase1.prototype = {
          game.load.spritesheet('atkBoss','assets/ataque_boss.png',200,49);//pixel da imagem é 256x256
         //Audio
         game.load.audio('audioBoss', 'assets/audio/Rugido.wav');
-        game.load.audio('cenario', 'assets/audio/temagame.ogg');
+        game.load.audio('temaGame', 'assets/audio/temagame.ogg');
         game.load.audio('tiroNave', 'assets/audio/Tironave.ogg');
         
         
@@ -56,7 +56,7 @@ jogo.fase1.prototype = {
         ///////////////////////////////////CENARIO/////////////////////////
         
         
-        temagame = game.add.audio('cenario');
+        var temagame = game.add.audio('temaGame');
         
         
         
