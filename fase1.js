@@ -110,7 +110,8 @@ jogo.fase1.prototype = {
         
         //Seta a bala para iniciar sua saida proximo da nave
         balaArma.setAll('anchor.y', 0.5);
-    
+        balaArma.setAll('scale.x', 2);
+        balaArma.setAll('scale.y', 2);
 
     
         
@@ -630,7 +631,7 @@ jogo.fase1.prototype = {
         furiaPonto ++;
         controleFuria();
              score += 300;
-             scoreBoss -= 1000;
+             scoreBoss = 0;
         msgScore.setText(score);//Mensagem que mostra o score
              bossHP = 200;
          }
@@ -770,7 +771,7 @@ jogo.fase1.prototype = {
               morning.visible = false;
           }
           
-           if(scoreBoss >= 1500){//Ao marcar 1500 pontos o boss spawna
+           if(scoreBoss >= 700){//Ao marcar 1500 pontos o boss spawna
                levelvelocidade -= 1;//Aumenta velocidade dos monstros
               
                
