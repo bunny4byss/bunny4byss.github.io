@@ -5,7 +5,7 @@ var jogo = {}, centroX = 600/2,centroY = 400/2,nave, speed = 5, velocidadeDispar
     scoreBoss = 0, level = 0, levelvelocidade = -1, night, evening, day, morning, sun, lifehack;
 var audioBoss, tiroNave;
 
-
+var bolado = 50
 
 
 
@@ -223,16 +223,26 @@ jogo.fase1.prototype = {
         
         
        //Verifica se a pessoa está no celular ou no PC
-        if(!this.game.device.desktop){
+        
+        if(this.game.device.desktop){
             vidaPersonagem = 6000;
-            game.time.events.loop(50, andarMobile, this);
-            nave.y = + 20;
-        }
+             }
         
     },
     update: function (){
         
-        
+        if(this.game.device.desktop){
+            vidaPersonagem = 6000;
+           
+     
+ if (movB == 1){
+     nave.y -= 1.5;
+ }
+            if(movB == 3){
+                nave.y += 1.5;
+            }
+            
+        }
             
         game.time.events.repeat(Phaser.Timer.SECOND * 3, 10, this.bossAndar, game);
        if(bossGrupo.total >= 1){
@@ -810,17 +820,3 @@ jogo.fase1.prototype = {
      
     }
 
-
-
-
-function andarMobile(){
-        
-   
-    if(movB == 1){
-     nave.y -= 40;
-    }
-    if(movB == 3){
-     nave.y += 50;
-    }
-    
-}
