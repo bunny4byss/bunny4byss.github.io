@@ -226,6 +226,7 @@ jogo.fase1.prototype = {
         if(!this.game.device.desktop){
             vidaPersonagem = 6000;
             game.time.events.loop(50, andarMobile, this);
+            nave.velocity.y = + 20;
         }
         
     },
