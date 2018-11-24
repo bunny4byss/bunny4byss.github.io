@@ -3,7 +3,8 @@ var jogo = {}, centroX = 600/2,centroY = 400/2,nave, speed = 5, velocidadeDispar
     furia, furia2, furia3, furiaPonto = 0, ragebala = 0, inimigoG, inimigoGrupoGarg ,inimigoGarg, boss, bossGrupo,
     bossHP = 100, movB, balaArma, balaBoss, proximoAtaqueB = 0, velocidadeAtaqueB = 3000, inimigoDP, inimigoDPGrupo,
     scoreBoss = 0, level = 0, levelvelocidade = -1, night, evening, day, morning, sun, lifehack;
-var audioBoss, tiroNave;
+
+var audioBoss, tiroNave, rageSom, hitNave, naveMorte;
 
 var bolado = 50
 
@@ -29,6 +30,9 @@ jogo.fase1.prototype = {
         game.load.audio('audioBoss', 'assets/audio/Rugido.wav');
         game.load.audio('temaGame', 'assets/audio/Temagame.ogg');
         game.load.audio('tiroNave', 'assets/audio/Tironave.ogg');
+        game.load.audio('rageKill', 'assets/audio/Rage.wav');
+        game.load.audio('hitNave', 'assets/audio/Hitnave.wav');
+        game.load.audio('naveMorte', 'assets/audio/Navemorte.wav');
         
         
         //HUD
@@ -63,6 +67,9 @@ jogo.fase1.prototype = {
          audioBoss = game.add.audio('audioBoss');
          tiroNave = game.add.audio('tiroNave');
          tiroNave.volume = 0.1;
+         rageSom = game.add.audio('rageKill');
+         hitNave = game.add.audio('hitNave');
+         naveMorte = game.add.audio('naveMorte');
         ////////////////////////////configurações do jogo/criação de balas/inimigos/////////////////////////////////
                 //nave
         
@@ -224,7 +231,7 @@ jogo.fase1.prototype = {
         
        //Verifica se a pessoa está no celular ou no PC
         
-        if(this.game.device.desktop){
+        if(!this.game.device.desktop){
             vidaPersonagem = 6000;
              }
         
@@ -232,7 +239,7 @@ jogo.fase1.prototype = {
     update: function (){
         
         if(!this.game.device.desktop){
-            vidaPersonagem = 6000;
+           
            
      
  if (movB == 1){
@@ -443,16 +450,18 @@ jogo.fase1.prototype = {
     
     console.log('Hit Nave');
         vidaPersonagem --;
+        e.kill();
     if(vidaPersonagem < 1){
       vida1.visible = false;
       vida2.visible = false;
       vida3.visible = false;
         
-     nave.animations.play('naveDestro', 14, false, true);   
+     nave.animations.play('naveDestro', 14, false, true);
+    naveMorte.play();
    // n.kill();
-    }
-    e.kill();
+    }else{ 
     
+    hitNave.restart();
         if(vidaPersonagem == 3){
             vida1.visible = true;
             vida2.visible = true;
@@ -478,6 +487,7 @@ jogo.fase1.prototype = {
             lifehack.visible = true;
         }
         
+        }
             
             
     
@@ -645,7 +655,7 @@ jogo.fase1.prototype = {
         
         furiaPonto ++;
         controleFuria();
-             score += 300;
+             score += 50;
              scoreBoss = 0;
         msgScore.setText(score);//Mensagem que mostra o score
              bossHP = 200;
@@ -658,35 +668,19 @@ jogo.fase1.prototype = {
     
     rage: function(){
         
+       inimigoG.animations.play('morte_drag2', 20, false, true);
+       inimigoDP.animations.play('morte_dragaoP', 20, false, true);
+       inimigoGarg.animations.play('morte_garg', 20, false, true);
         
-         //Controle a velocidade de disparo atraves da variavel velocidadeDisparo
-        if(game.time.now > proximoTiro){
-           proximoTiro = game.time.now + velocidadeDisparo;
-           
-        console.log('atirando');
-        var bala = balaArma.getFirstDead();
-        bala.reset(nave.x, nave.y);
-        
-        
-        //Muda a direcao da bala de acordo com a tecla apertada
-            for(i = 0; i < 10; i++){
-                
-            ragebala += 10
-            if(direcaoBala == true){
-        game.physics.arcade.moveToXY(bala, -100, nave.y + ragebala, -1000);
-            }else{
-                
-                if(direcaoBala == false){
-                game.physics.arcade.moveToXY(bala, 100, nave.y - ragebala, 1000);
-                }
-            }
-           
-           }
+            rageSom.play();
+
             ragebala = 0;
             furiaPonto -= 4
             controleFuria();
+            score += 30;
+            scoreBoss += 30;
             
-        }
+        
         
     },
     posSprite: function(){
