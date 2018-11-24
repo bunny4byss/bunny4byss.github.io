@@ -4,7 +4,7 @@ var jogo = {}, centroX = 600/2,centroY = 400/2,nave, speed = 5, velocidadeDispar
     bossHP = 100, movB, balaArma, balaBoss, proximoAtaqueB = 0, velocidadeAtaqueB = 3000, inimigoDP, inimigoDPGrupo,
     scoreBoss = 0, level = 0, levelvelocidade = -1, night, evening, day, morning, sun, lifehack;
 
-var audioBoss, tiroNave, rageSom, hitNave, naveMorte;
+var audioBoss, tiroNave, rageSom, hitNave, naveMorte, fullRage;
 
 var bolado = 50
 
@@ -33,6 +33,7 @@ jogo.fase1.prototype = {
         game.load.audio('rageKill', 'assets/audio/Rage.wav');
         game.load.audio('hitNave', 'assets/audio/Hitnave.wav');
         game.load.audio('naveMorte', 'assets/audio/Navemorte.wav');
+        game.load.audio('fullRage', 'assets/audio/Fullrage.wav');
         
         
         //HUD
@@ -70,6 +71,7 @@ jogo.fase1.prototype = {
          rageSom = game.add.audio('rageKill');
          hitNave = game.add.audio('hitNave');
          naveMorte = game.add.audio('naveMorte');
+         fullRage = game.add.audio('fullRage');
         ////////////////////////////configurações do jogo/criação de balas/inimigos/////////////////////////////////
                 //nave
         
@@ -333,7 +335,7 @@ jogo.fase1.prototype = {
             
              if(game.input.keyboard.isDown(Phaser.Keyboard.X)){
                  
-                  if(furiaPonto >= 2){
+                  if(furiaPonto >= 5){
                   this.rage();
                   }
             
@@ -672,13 +674,14 @@ jogo.fase1.prototype = {
        inimigoDP.animations.play('morte_dragaoP', 20, false, true);
        inimigoGarg.animations.play('morte_garg', 20, false, true);
         
-            rageSom.play();
+            
 
             ragebala = 0;
-            furiaPonto -= 4
+            furiaPonto = 0;
             controleFuria();
             score += 30;
             scoreBoss += 30;
+            rageSom.play();
             
         
         
@@ -714,13 +717,14 @@ jogo.fase1.prototype = {
  function controleFuria (){
        
         
-        if(furiaPonto >= 5){
+        if(furiaPonto == 5){
             rage.visible = false;
             rage2.visible = false;
             rage3.visible = true;
             
             score += 10;
             scoreBoss += 10;
+            fullRage.play();
             
         }else{
         if(furiaPonto >= 2 && furiaPonto < 5){
