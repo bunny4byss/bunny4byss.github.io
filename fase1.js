@@ -1,4 +1,4 @@
-var jogo = {}, centroX = 600/2,centroY = 400/2,nave, speed = 5, velocidadeDisparo = 200, proximoTiro = 0, inimigo,
+var jogo = {}, centroX = 600/2,centroY = 400/2,nave, speed = 5, velocidadeDisparo = 300, proximoTiro = 0, inimigo,
     bala, inimigoGrupo, direcaoBala = true, vidaPersonagem = 3, vida1, vida2, vida3, score = 0, msgScore, fimJogo,
     furia, furia2, furia3, furiaPonto = 0, ragebala = 0, inimigoG, inimigoGrupoGarg ,inimigoGarg, boss, bossGrupo,
     bossHP = 100, movB, balaArma, balaBoss, proximoAtaqueB = 0, velocidadeAtaqueB = 3000, inimigoDP, inimigoDPGrupo,
@@ -26,6 +26,8 @@ jogo.fase1.prototype = {
          game.load.spritesheet('gargo','assets/gargoyle.png',64,64);//pixel da imagem é 64x64
          game.load.spritesheet('boss','assets/boss.png',256,185);//pixel da imagem é 256x256
          game.load.spritesheet('atkBoss','assets/ataque_boss.png',200,49);//pixel da imagem é 256x256
+        
+        
         //Audio
         game.load.audio('audioBoss', 'assets/audio/Rugido.wav');
         game.load.audio('temaGame', 'assets/audio/Temagame.ogg');
@@ -61,7 +63,7 @@ jogo.fase1.prototype = {
         ///////////////////////////////////CENARIO/////////////////////////
         
         
-        var temagame = game.add.audio('temaGame');
+         var temagame = game.add.audio('temaGame');
         
         
         
@@ -186,16 +188,6 @@ jogo.fase1.prototype = {
         
         
         ////////////////////////////configurações do jogo/criação de balas/inimigos/////////////////////////////////
-        
-        
-        
-        
-        
-        
-        
-        
-        
-       
 
         
         //Vidas
@@ -228,7 +220,8 @@ jogo.fase1.prototype = {
          game.time.events.loop(50, criarSprite, this);
     
         
-        temagame.play();
+         temagame.play();
+         temagame.loop = true;
         
         
        //Verifica se a pessoa está no celular ou no PC
