@@ -675,7 +675,7 @@ jogo.fase1.prototype = {
             score += 30;
             scoreBoss += 30;
             rageSom.play();
-            
+            msgScore.setText(score);//Mensagem que mostra o score
         
         
     },
