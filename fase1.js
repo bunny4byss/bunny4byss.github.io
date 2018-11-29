@@ -777,7 +777,7 @@ jogo.fase1.prototype = {
               morning.visible = false;
           }
           
-           if(scoreBoss >= 700){//Ao marcar 1500 pontos o boss spawna
+           if(scoreBoss >= 400){//Ao marcar 1500 pontos o boss spawna
                levelvelocidade -= 1;//Aumenta velocidade dos monstros
               
                
